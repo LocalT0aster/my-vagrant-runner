@@ -20,8 +20,8 @@ From this repository root:
 
 ```bash
 vagrant plugin install vagrant-libvirt
-vagrant up github-runner
-vagrant ssh github-runner
+vagrant up
+vagrant ssh
 ```
 
 Provisioning is split into two stages:
@@ -41,7 +41,7 @@ SSH key setup:
 Static VM IP:
 
 - default: `192.168.121.51`
-- override: `RUNNER_VM_IP=192.168.121.61 vagrant up github-runner`
+- override: `RUNNER_VM_IP=192.168.121.61 vagrant up`
 
 This setup uses:
 

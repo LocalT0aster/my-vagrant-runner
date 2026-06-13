@@ -58,7 +58,7 @@ Vagrant.configure("2") do |config|
     end
   end
 
-  config.vm.define "github-runner", autostart: false do |runner|
+  config.vm.define "github-runner", primary: true do |runner|
     configure_common_vm.call(
       runner,
       hostname: "github-runner-s26",
