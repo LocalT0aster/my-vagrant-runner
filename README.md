@@ -6,7 +6,7 @@ Standalone Vagrant/libvirt setup for a self-hosted GitHub Actions runner.
 - Machine: `github-runner`
 - Default hostname: `github-runner-s26`
 - Default static IP: `192.168.121.51`
-- Default resources: 4 vCPUs, 4096 MB RAM
+- Default resources: 4 vCPUs, 8192 MB RAM
 
 ## Requirements
 

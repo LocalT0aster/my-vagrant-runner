@@ -64,7 +64,7 @@ Vagrant.configure("2") do |config|
       hostname: "github-runner-s26",
       ip: runner_vm_ip,
       cpus: ENV.fetch("RUNNER_VM_CPUS", "4"),
-      memory: ENV.fetch("RUNNER_VM_MEMORY", "4096")
+      memory: ENV.fetch("RUNNER_VM_MEMORY", "8192")
     )
 
     runner.vm.provision "shell",
