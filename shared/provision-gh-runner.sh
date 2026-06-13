@@ -12,10 +12,13 @@ apt-get update
 apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
+    gh \
     git \
+    git-lfs \
     jq \
     tar \
     unzip
+
 
 if ! id -u github-runner >/dev/null 2>&1; then
     useradd --create-home --home-dir /home/github-runner --shell /bin/bash github-runner
