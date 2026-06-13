@@ -30,6 +30,7 @@ Provisioning is split into two stages:
 - automatic reboot between stages
 - `shared/provision-post-kernel.sh` (post-kernel stage with ansible install)
 - `shared/provision-gh-runner.sh` (runner VM only; installs the GitHub runner binaries)
+- `shared/provision-docker.sh` (runner VM only; installs Docker Engine, Buildx, and Compose)
 - `shared/provision-gh-runner-register.sh` (runner VM only; manual registration step)
 
 SSH key setup:
@@ -61,8 +62,10 @@ Base runner provisioning installs:
 
 - `ansible`
 - `git`, `curl`, `jq`, `tar`, `unzip`
+- Docker Engine with Buildx and the Docker Compose plugin
 - the GitHub Actions runner under `/opt/actions-runner`
 - a dedicated `github-runner` user
+- `vagrant` and `github-runner` membership in the `docker` group
 
 Registration is a separate manual step because GitHub registration tokens are
 short-lived.
@@ -100,6 +103,8 @@ Useful commands:
 
 ```bash
 vagrant ssh github-runner
+docker version
+docker compose version
 sudo systemctl list-units 'actions.runner.*'
 sudo systemctl status 'actions.runner.*'
 ```
@@ -108,6 +113,10 @@ Notes:
 
 - The registration step is idempotent for an already configured runner; it
   starts the service again if needed.
-- The runner VM does not install Docker by default. For this lab's Ansible
-  workflow, that is sufficient. If you later add container actions, install
-  Docker on the runner VM as well.
+- Docker group membership grants root-equivalent access through the Docker
+  socket. This is expected for GitHub Actions container jobs, but do not treat
+  the `github-runner` account as confined.
+- For an existing VM, run
+  `vagrant provision github-runner --provision-with docker` to install Docker
+  without rebuilding the VM. Start a new SSH session before running Docker as
+  `vagrant` so the group membership is active.

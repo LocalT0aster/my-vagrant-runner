@@ -149,7 +149,7 @@ create_registration_token() {
 }
 
 runner_name="${GH_RUNNER_NAME:-$(hostname -s)}"
-runner_labels="${GH_RUNNER_LABELS:-self-hosted,linux,vagrant}"
+runner_labels="${GH_RUNNER_LABELS:-self-hosted,linux,vagrant,docker}"
 runner_group="${GH_RUNNER_GROUP:-Default}"
 runner_workdir="${GH_RUNNER_WORKDIR:-_work}"
 runner_disable_update="${GH_RUNNER_DISABLE_UPDATE:-false}"

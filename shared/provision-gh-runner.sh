@@ -21,6 +21,10 @@ if ! id -u github-runner >/dev/null 2>&1; then
     useradd --create-home --home-dir /home/github-runner --shell /bin/bash github-runner
 fi
 
+if getent group docker >/dev/null; then
+    usermod -aG docker github-runner
+fi
+
 install -d -o github-runner -g github-runner /opt/actions-runner
 install -d -o github-runner -g github-runner /opt/actions-runner/_work
 

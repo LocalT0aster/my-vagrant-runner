@@ -76,6 +76,7 @@ Vagrant.configure("2") do |config|
       name: "github-runner-base",
       path: "shared/provision-gh-runner.sh",
       env: runner_env
+    runner.vm.provision "shell", name: "docker", path: "shared/provision-docker.sh"
     runner.vm.provision "shell",
       name: "github-runner-register",
       path: "shared/provision-gh-runner-register.sh",
