@@ -1,0 +1,48 @@
+# General
+*.env
+.vagrant/
+
+# Log files (if you are creating logs in debug mode, uncomment this)
+# *.log
+shared/**
+!shared/provision.sh
+!shared/provision-post-kernel.sh
+!shared/provision-gh-runner.sh
+!shared/provision-gh-runner-register.sh
+!shared/github-runner.env.example
+
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+tfplan
+*.tfvars
+*.tfvars.json
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraform.lock.hcl
+
+# Pulumi
+.pulumi/
+pulumi/.venv/
+pulumi/venv/
+pulumi/Pulumi.*.yaml
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+app_python/.venv/
+app_python/.snyk-venv/
+app_python/test-results/
+
+# IDE
+.vscode/
+
+# Ansible runtime/cache
+.ansible/
